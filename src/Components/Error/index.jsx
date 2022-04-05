@@ -1,4 +1,6 @@
 import React from "react";
+import { useTheme } from "../../StyleGlobal/Hools";
+import error from "../../assets/404.svg";
 import {
   ErrorSubtiltle,
   ErrorTitle,
@@ -7,12 +9,13 @@ import {
 } from "./ErrorStyle";
 
 const Error = () => {
+  const { theme } = useTheme();
   return (
     <>
-      <ErrorWrapper>
-        <ErrorTitle> Oups ...</ErrorTitle>
-        <Illustration src="htpps://github.com/atoulmet/assets/blob/master/404.svg?eaw=true" />
-        <ErrorSubtiltle>
+      <ErrorWrapper theme={theme}>
+        <ErrorTitle theme={theme}> Oups ...</ErrorTitle>
+        <Illustration src={error} />
+        <ErrorSubtiltle theme={theme}>
           il semblerait que la page vous cherchez n'existe pas
         </ErrorSubtiltle>
       </ErrorWrapper>

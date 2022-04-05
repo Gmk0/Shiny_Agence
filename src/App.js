@@ -8,20 +8,28 @@ import Home from "./Pages/Home/Home";
 import Survey from "./Pages/Survey/Survey";
 import Results from "./Pages/Resultat/Results";
 import { GlobalStyle } from "./StyleGlobal/GlobalStyle";
+import { SurveyProvider, ThemeProvider } from "./StyleGlobal";
+import Footer from "./Components/Footer/footer";
+import GlobalStyle2 from "./StyleGlobal/GlobalStyle2";
 
 function App() {
   return (
     <>
       <Router>
-        <GlobalStyle />
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Survey/:questionNumber" element={<Survey />} />
-          <Route path="*" element={<Error />} />
-          <Route path="/Freelances" element={<Freelances />} />
-          <Route path="/Results" element={<Results />} />
-        </Routes>
+        <ThemeProvider>
+          <SurveyProvider>
+            <GlobalStyle2 />
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/Survey/:questionNumber" element={<Survey />} />
+              <Route path="*" element={<Error />} />
+              <Route path="/Freelances" element={<Freelances />} />
+              <Route path="/Results" element={<Results />} />
+            </Routes>
+            <Footer />
+          </SurveyProvider>
+        </ThemeProvider>
       </Router>
     </>
   );

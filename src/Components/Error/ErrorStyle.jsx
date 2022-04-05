@@ -5,11 +5,13 @@ export const ErrorWrapper = styled.div`
   margin: 30px;
   display: flex;
   flex-direction: column;
-  background-color: ${colors.background};
+  background-color: ${({ theme }) =>
+    theme === "light" ? colors.backgroundLight : colors.backgroundDark};
   align-items: center;
 `;
 
 export const ErrorTitle = styled.h1`
+  color: ${({ theme }) => (theme === "light" ? "#000000" : "#ffffff")};
   font-weight: 300;
 `;
 export const Illustration = styled.img`
@@ -17,5 +19,5 @@ export const Illustration = styled.img`
 `;
 export const ErrorSubtiltle = styled.h2`
   font-weight: 300;
-  color: ${colors.secondary};
+  color: ${({ theme }) => (theme === "light" ? "#000000" : "#ffffff")};
 `;

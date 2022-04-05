@@ -6,7 +6,8 @@ export const CardWrapper = styled.div`
   flex-direction: column;
   justify-content: space-around;
   padding: 15px;
-  background-color: ${colors.backgroundLight};
+  background-color: ${({ theme }) =>
+    theme === "light" ? colors.backgroundLight : colors.backgroundDark};
   border-radius: 30px;
   width: 300px;
   height: 300px;
@@ -18,17 +19,17 @@ export const CardWrapper = styled.div`
 `;
 
 export const CardLabel = styled.span`
-    color:#5843e4;
-    font-size :22px;
-    font-weight:normal;
-    padding-left:15px;
+  color: ${({ theme }) => (theme === "light" ? colors.primary : "#ffffff")};
+  font-size: 22px;
+  font-weight: normal;
+  padding-left: 15px;
 `;
 
 export const CardTitle = styled.span`
-color:black;
-font-size:22px;
-font-weight:normal;
-align-self:center;
+  color: ${({ theme }) => (theme === "light" ? "#000000" : "#ffffff")};
+  font-size: 22px;
+  font-weight: normal;
+  align-self: center;
 `;
 export const CardImage = styled.img`
   height: 150px;

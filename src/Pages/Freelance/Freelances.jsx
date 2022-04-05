@@ -1,43 +1,49 @@
 import React from "react";
-import DefaultsPicture from "../../assets/svg.svg";
 import Card from "../../Components/Card";
-import { CardsContainer, PageSubtile, PageTitle } from "./FreelancesStyle";
-
-const freelanceProfisl = [
-  {
-    name: "jane Doe",
-    jobTitle: "Devops",
-    picture: DefaultsPicture,
-  },
-  {
-    name: "jhon Doe",
-    jobTitle: "Devops",
-    picture: DefaultsPicture,
-  },
-  {
-    name: "janne Doe",
-    jobTitle: "Devops",
-    picture: DefaultsPicture,
-  },
-];
+import { useFetch, useTheme } from "../../StyleGlobal/Hools";
+import { Loader } from "../../StyleGlobal/GlobalStyle";
+import {
+  CardsContainer,
+  LoaderWrapper,
+  PageSubtile,
+  PageTitle,
+} from "./FreelancesStyle";
 
 const Freelances = () => {
+  const { theme } = useTheme();
+  const { data, isLoading, error } = useFetch(
+    `http://localhost:8000/freelances`
+  );
+  const freelancersList = data?.freelancersList;
+
+  if (error) {
+    return <span>Oups il y a un probleme</span>;
+  }
+
   return (
     <div>
-      <PageTitle> Trouvez Votre Prestataire</PageTitle>
-      <PageSubtile>
+      <PageTitle theme={theme}> Trouvez Votre Prestataire</PageTitle>
+      <PageSubtile theme={theme}>
         Chez Shiny nous reunissons les meilleurs profils pour vous
       </PageSubtile>
-      <CardsContainer>
-        {freelanceProfisl.map((profile, index) => (
-          <Card
-            key={`${profile.name}-${index}`}
-            label={profile.jobTitle}
-            picture={profile.picture}
-            title={profile.name}
-          />
-        ))}
-      </CardsContainer>
+
+      {isLoading ? (
+        <LoaderWrapper>
+          <Loader theme={theme} />
+        </LoaderWrapper>
+      ) : (
+        <CardsContainer>
+          {freelancersList &&
+            freelancersList.map((profile, index) => (
+              <Card
+                key={`${profile.name}-${index}`}
+                label={profile.name}
+                title={profile.job}
+                picture={profile.picture}
+              />
+            ))}
+        </CardsContainer>
+      )}
     </div>
   );
 };
