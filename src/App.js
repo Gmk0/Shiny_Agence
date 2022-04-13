@@ -7,7 +7,6 @@ import Freelances from "./Pages/Freelance/Freelances";
 import Home from "./Pages/Home/Home";
 import Survey from "./Pages/Survey/Survey";
 import Results from "./Pages/Resultat/Results";
-import { GlobalStyle } from "./StyleGlobal/GlobalStyle";
 import { SurveyProvider, ThemeProvider } from "./StyleGlobal";
 import Footer from "./Components/Footer/footer";
 import GlobalStyle2 from "./StyleGlobal/GlobalStyle2";

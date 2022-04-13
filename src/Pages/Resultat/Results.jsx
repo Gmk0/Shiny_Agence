@@ -26,14 +26,16 @@ const Results = () => {
   const { theme } = useTheme();
   const answers = useContext(SurveyContext);
   const fetchParams = formatFetchParams(answers);
-  console.log(fetchParams);
+
   const { data, isLoading, error } = useFetch(
-    `http://localhost:8000/results/?${fetchParams}`
+    `http://localhost:8000/results?${fetchParams}`
   );
-  const resultsData = data?.resultsData;
+
   if (error) {
     return <span>il y a un probleme</span>;
   }
+  const resultsData = data?.resultsData;
+
   return isLoading ? (
     <LoaderWrapper>
       <Loader />
